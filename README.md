@@ -15,6 +15,19 @@ https://investment-copilot-vercel.vercel.app
 - `/terms` terms starter
 - `/api/health` deployment health check
 - `/api/analyze` educational asset analysis endpoint
+- `/api/quote?symbol=VOO` market-data endpoint with provider-ready fallback
+
+## Market data
+
+The quote endpoint is prepared for Alpha Vantage. Add this environment variable
+in Vercel when you are ready to connect live provider data:
+
+```text
+ALPHA_VANTAGE_API_KEY=your_key_here
+```
+
+Without the key, `/api/quote` returns a safe "provider not configured" response
+instead of pretending data is live.
 
 ## Deploy from the Vercel dashboard
 

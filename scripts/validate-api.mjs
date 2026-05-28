@@ -1,5 +1,6 @@
 import analyze from "../api/analyze.js";
 import health from "../api/health.js";
+import quote from "../api/quote.js";
 
 function createResponse() {
   return {
@@ -60,4 +61,19 @@ if (analyzeResponse.statusCode !== 200 || !actionValid) {
   throw new Error("Analyze route failed validation");
 }
 
-console.log("Validated Vercel health and analyze routes.");
+const quoteResponse = createResponse();
+await quote(
+  {
+    method: "GET",
+    query: {
+      symbol: "VOO"
+    }
+  },
+  quoteResponse
+);
+
+if (quoteResponse.statusCode !== 200 || quoteResponse.body?.symbol !== "VOO") {
+  throw new Error("Quote route failed validation");
+}
+
+console.log("Validated Vercel health, analyze, and quote routes.");
