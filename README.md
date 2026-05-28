@@ -2,6 +2,12 @@
 
 Vercel-ready public website and API backend for the Investment Co-Pilot mobile app.
 
+Production URL:
+
+```text
+https://investment-copilot-vercel.vercel.app
+```
+
 ## Included
 
 - `/` landing page
