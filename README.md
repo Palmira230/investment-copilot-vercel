@@ -15,6 +15,7 @@ https://investment-copilot-vercel.vercel.app
 - `/terms` terms starter
 - `/api/health` deployment health check
 - `/api/analyze` educational asset analysis endpoint
+- `/api/copilot` AI-ready educational briefing endpoint with a safe fallback
 - `/api/quote?symbol=VOO` market-data endpoint with provider-ready fallback
 
 ## Market data
@@ -28,6 +29,24 @@ ALPHA_VANTAGE_API_KEY=your_key_here
 
 Without the key, `/api/quote` returns a safe "provider not configured" response
 instead of pretending data is live.
+
+## Optional AI provider
+
+The `/api/copilot` endpoint can call OpenAI from the backend when this Vercel
+environment variable is configured:
+
+```text
+OPENAI_API_KEY=your_openai_key
+```
+
+Optional:
+
+```text
+OPENAI_MODEL=gpt-4.1-mini
+```
+
+Without `OPENAI_API_KEY`, the endpoint returns a rules-based educational
+briefing so the mobile app keeps working safely.
 
 ## Deploy from the Vercel dashboard
 
