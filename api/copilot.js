@@ -13,6 +13,7 @@ export default async function handler(request, response) {
   const body = typeof request.body === "string" ? JSON.parse(request.body || "{}") : request.body || {};
   const profile = allowedProfiles.has(body.profile) ? body.profile : "balanced";
   const asset = body.asset;
+  const question = typeof body.question === "string" ? body.question.trim().slice(0, 240) : "";
 
   if (!asset || typeof asset !== "object" || !asset.symbol || !asset.name) {
     response.status(400).json({ error: "Missing asset object" });
@@ -32,7 +33,7 @@ export default async function handler(request, response) {
         profile
       );
 
-  const insight = await createCopilotInsight({ asset, analysis, profile });
+  const insight = await createCopilotInsight({ asset, analysis, profile, question });
 
   response.status(200).json({
     disclaimer: "Educational AI analysis only. This is not financial advice and does not guarantee profits, income, or outcomes.",
@@ -42,6 +43,7 @@ export default async function handler(request, response) {
       name: asset.name,
       type: asset.type || "Unknown"
     },
+    question,
     insight
   });
 }

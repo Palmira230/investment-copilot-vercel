@@ -46,7 +46,8 @@ OPENAI_MODEL=gpt-4.1-mini
 ```
 
 Without `OPENAI_API_KEY`, the endpoint returns a rules-based educational
-briefing so the mobile app keeps working safely.
+briefing so the mobile app keeps working safely. The endpoint also accepts an
+optional `question` field for focused educational asset questions.
 
 ## Deploy from the Vercel dashboard
 

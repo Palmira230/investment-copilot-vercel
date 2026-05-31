@@ -83,7 +83,8 @@ await copilot(
         timeHorizon: "5+ years",
         risks: ["Broad equity market drawdowns", "Concentration risk"]
       },
-      analysis
+      analysis,
+      question: "What should I review before adding exposure?"
     }
   },
   copilotResponse
